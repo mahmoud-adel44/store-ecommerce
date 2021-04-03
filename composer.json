@@ -19,8 +19,12 @@
         "laravel/ui": "2.4",
         "mcamara/laravel-localization": "^1.6",
         "yajra/laravel-datatables-oracle": "~9.0"
+
+
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
+        "beyondcode/laravel-query-detector": "^1.5",
         "facade/ignition": "^2.0",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^4.1",
@@ -38,6 +42,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Helpers/general.php"
         ]
     },
     "extra": {

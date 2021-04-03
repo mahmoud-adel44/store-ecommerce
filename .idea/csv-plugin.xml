@@ -17,10 +17,31 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\app\Models\Models\SettingTranslation.php">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\public\assets\admin\data\d3\circle\visit-sequences.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\resources\lang\ar\admin\sidebar.php">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\resources\views\dashboard\includes\sidebar.blade.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
             </Attribute>
           </value>
         </entry>

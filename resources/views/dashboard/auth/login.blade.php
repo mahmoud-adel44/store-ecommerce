@@ -25,7 +25,7 @@
                                 @csrf
                                 <fieldset class="form-group position-relative has-icon-left mb-0">
                                     <input type="text" name="email" class="form-control form-control-lg input-lg"
-                                           value="{{old('email')}}" id="email" placeholder="أدخل البريد الالكتروني ">
+                                           value="mahmoud@gmail.com" id="email" placeholder="أدخل البريد الالكتروني ">
                                     <div class="form-control-position">
                                         <i class="ft-user"></i>
                                     </div>
@@ -36,7 +36,7 @@
                                 </fieldset>
                                 <fieldset class="form-group position-relative has-icon-left">
                                     <input type="password" name="password" class="form-control form-control-lg input-lg"
-                                           id="user-password"
+                                           id="user-password" value="12345678"
                                            placeholder="أدخل كلمة المرور">
                                     <div class="form-control-position">
                                         <i class="la la-key"></i>
