@@ -13,7 +13,7 @@ class SettingDatabaseSeeder extends Seeder
     public function run()
     {
         Setting::setMany([
-            'default_locale' => 'en',
+            'default_locale' => 'ar',
             'default_timezone' => 'Africa/Cairo',
             'reviews_enabled' => true,
             'auto_approve_reviews' => true,
@@ -25,11 +25,12 @@ class SettingDatabaseSeeder extends Seeder
             'outer_shipping_cost' => 0,
             'free_shipping_cost' => 0,
             'translatable' => [
-                'store_name' => 'Emamy Store',
-                'free_shipping_label' => ' Free shipping',
-                'local_label' => ' Locale shipping',
-                'outer_label' => ' Outer shipping',
+                'store_name' => 'متجر الامامي',
+                'free_shipping_label' => 'توصيل مجاني',
+                'local_label' => 'توصيل داخلي',
+                'outer_label' => 'توصيل خارجي',
             ],
         ]);
+
     }
 }
