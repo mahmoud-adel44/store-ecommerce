@@ -45,6 +45,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\resources\views\dashboard\includes\header.blade.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\resources\views\dashboard\includes\sidebar.blade.php">
           <value>
             <Attribute>
