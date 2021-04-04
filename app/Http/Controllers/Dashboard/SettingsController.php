@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShippingsRequest;
 use App\Models\Setting;
+use DB;
 
 class SettingsController extends Controller
 {
@@ -24,5 +26,30 @@ class SettingsController extends Controller
             $shippingMethod = Setting::where('key', 'free_shipping_label')->first();
 
         return view('dashboard.settings.shippings.edit' , compact('shippingMethod'));
+    }
+
+    public function updateShippingMethods(ShippingsRequest $request, $id)
+    {
+
+        //validation
+
+        //update db
+
+        try {
+            $shipping_method = Setting::findOrFail($id);
+
+            DB::beginTransaction();
+            $shipping_method->update(['plain_value' => $request->plain_value]);
+            //save translations
+            $shipping_method->value = $request->value;
+            $shipping_method->save();
+//
+            DB::commit();
+            return redirect()->back()->with(['success' => __('admin/sidebar.success')]);
+        } catch (\Exception $ex) {
+            return redirect()->back()->with(['error' => __('admin/sidebar.error')]);
+            DB::rollback();
+        }
+
     }
 }

@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\database\seeds\SettingDatabaseSeeder.php">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\public\assets\admin\data\d3\circle\visit-sequences.csv">
           <value>
             <Attribute>
