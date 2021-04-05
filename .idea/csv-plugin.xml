@@ -24,6 +24,34 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\database\factories\CategoryFactory.php">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\database\migrations\2021_04_05_005334_create_categories_table.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\database\migrations\2021_04_05_005419_create_category_translations_table.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\database\seeds\CategorySeeder.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\database\seeds\SettingDatabaseSeeder.php">
           <value>
             <Attribute>
