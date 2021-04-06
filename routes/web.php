@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('testLayout' , function (){
-   return view('layouts.admin');
+Route::get('test' , function (){
+   $categories = App\Models\Category::find(1);
+   $categories ->makeVisible('translations');
+   return $categories;
 });
 
 //Auth::routes();
