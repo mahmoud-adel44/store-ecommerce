@@ -12,3 +12,8 @@ function transwords($message)
 {
     return Stichoza\GoogleTranslate\GoogleTranslate::trans($message , App::getLocale());
 }
+
+function uploadImage($folder,$image){
+    $image->store('/', $folder);
+    return $image->hashName();
+ }
