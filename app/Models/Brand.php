@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Models;
-
 use Astrotomic\Translatable\Translatable;
-
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Brand extends Model
 {
     use Translatable;
 
@@ -25,7 +23,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['parent_id', 'slug', 'is_active'];
+    protected $fillable = ['is_active' , 'photo'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,30 +40,12 @@ class Category extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
-    /**
-     * @var mixed
-     */
-    private $is_active;
-
-    /**
-     * @return mixed
-     * @var mixed
-     */
-
-
-    public function scopeParent($query){
-        return $query -> whereNull('parent_id');
-    }
-    public function scopeChild($query){
-        return $query -> whereNotNull('parent_id');
-    }
-
     public function getActive(){
         return  $this -> is_active  === 0 ?  'غير مفعل'   : 'مفعل' ;
     }
 
-    public function _parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function  getPhotoAttribute($val)
     {
-        return $this->belongsTo(self::class, 'parent_id');
+        return ($val !== null) ? asset('assets/images/brands/' . $val) : "";
     }
 }

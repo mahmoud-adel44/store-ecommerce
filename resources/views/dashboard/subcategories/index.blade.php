@@ -74,9 +74,6 @@
 
                                                                 <a href="{{route('admin.subcategories.delete',$category -> id)}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
-
-
-
                                                             </div>
                                                         </td>
                                                     </tr>
