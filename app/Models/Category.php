@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Astrotomic\Translatable\Translatable;
 
 use Illuminate\Database\Eloquent\Model;
@@ -41,4 +42,29 @@ class Category extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+    /**
+     * @var mixed
+     */
+    private $is_active;
+
+    /**
+     * @return mixed
+     * @var mixed
+     */
+
+
+    public function scopeParent($query){
+        return $query -> whereNull('parent_id');
+    }
+    public function scopeChild($query){
+        return $query -> whereNotNull('parent_id');
+    }
+
+    public function getActive(){
+        return  $this -> is_active  === 0 ?  'غير مفعل'   : 'مفعل' ;
+    }
+
+    public function _parent(){
+        return $this->belongsTo(self::class, 'parent_id');
+    }
 }

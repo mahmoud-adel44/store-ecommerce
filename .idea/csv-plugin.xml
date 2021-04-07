@@ -10,7 +10,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\app\Http\Controllers\Dashboard\MainCategoriesController.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\app\Http\Middleware\Authenticate.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\app\Http\Requests\MainCategoryRequest.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\app\Models\Category.php">
           <value>
             <Attribute>
               <option name="separator" value=";" />
@@ -67,6 +88,13 @@
           </value>
         </entry>
         <entry key="\resources\lang\ar\admin\sidebar.php">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\resources\views\dashboard\categories\index.blade.php">
           <value>
             <Attribute>
               <option name="separator" value="," />
