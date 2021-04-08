@@ -41,7 +41,7 @@
                             @include('dashboard.includes.alerts.errors')
 
                             <div class="card-content collapse show">
-                                <div class="card-body card-dashboard">
+                                <div class=" card-dashboard">
                                     <table class="table display nowrap table-striped table-bordered scroll-horizontal">
                                         <thead class="">
                                             <tr>

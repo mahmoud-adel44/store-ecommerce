@@ -9,6 +9,10 @@ class BrandRequest extends FormRequest
     /**
      * @var mixed
      */
+    /**
+     * @var mixed
+     */
+
 
 
     /**
@@ -30,7 +34,7 @@ class BrandRequest extends FormRequest
     {
         return [
             'name' => 'required',
-           'photo' => 'required|mimes:png,jpg,'
+           'photo' => 'required_without:id|mimes:png,jpg,'
 //            'slug' => 'required'
         ];
     }

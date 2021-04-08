@@ -52,13 +52,12 @@
                                                     <style>
                                                         .fas{
                                                             cursor: pointer;
-
-
                                                         }
 
                                                     </style>
                                                 </i>
                                                 <input type="file" id="file" name="photo" style="display: none">
+
                                                 <span class="file-custom"></span>
                                             </label>
                                             @error('photo')
