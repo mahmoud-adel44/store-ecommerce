@@ -21,11 +21,11 @@ class CreateBrandTranslationsTable extends Migration
 //            $table->unique(['brand_id', 'locale']);
 //            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
 
-            $table->increments('id');
-            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
-            $table->string('locale');
-            $table->string('name');
-            $table->unique(['brand_id', 'locale']);
+                $table->increments('id');
+                $table->integer('brand_id');
+                $table->string('locale');
+                $table->string('name');
+                $table->unique(['brand_id', 'locale']);
 //            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }

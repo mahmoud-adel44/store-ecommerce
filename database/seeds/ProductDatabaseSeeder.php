@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class ProductDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 10)->create();
+        factory(Product::class, 20)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
+
 class Tag extends Model
 {
     use Translatable;
@@ -16,9 +17,9 @@ class Tag extends Model
     protected $with = ['translations'];
 
 
-    protected $translatedAttributes = ['name' , 'locale' ];
+    protected $translatedAttributes = ['name', 'locale'];
 
-//    protected $visiableAttributes = ['locale'];
+    //    protected $visiableAttributes = ['locale'];
 
     /**
      * The attributes that are mass assignable.
@@ -33,10 +34,4 @@ class Tag extends Model
      * @var array
      */
     protected $hidden = ['translations'];
-//
-//    public function tag_translations()
-//    {
-//       return $this->belongsTo(TagTranslation::class);
-//    }
-
 }

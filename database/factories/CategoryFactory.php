@@ -10,6 +10,6 @@ $factory->define(Category::class, function (Faker $faker) {
         'name' => $faker->word(),
         'slug' => $faker->slug(),
         'is_active' => $faker->boolean(),
-        'parent_id' => rand(1 , 40),
+        'parent_id' => rand(10 , 20),
     ];
 });

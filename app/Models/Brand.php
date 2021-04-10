@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,14 +24,14 @@ class Brand extends Model
      *
      * @var array
      */
-    protected $fillable = ['is_active' , 'photo'];
+    protected $fillable = ['is_active', 'photo'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array
      */
-    protected $hidden = ['translations'];
+    // protected $hidden = ['translations'];
 
     /**
      * The attributes that should be cast to native types.
@@ -40,8 +41,14 @@ class Brand extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
-    public function getActive(){
-        return  $this -> is_active  === 0 ?  'غير مفعل'   : 'مفعل' ;
+    public function getActive()
+    {
+        return  $this->is_active  === 0 ?  'غير مفعل'   : 'مفعل';
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
     }
 
 
