@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        // Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Yoeunes\Notify\NotifyServiceProvider::class,
         /*
          * Package Service Providers...
          */

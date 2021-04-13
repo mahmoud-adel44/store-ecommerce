@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Translatable;
+use notify;
 use Illuminate\Database\Eloquent\Model;
+use Astrotomic\Translatable\Translatable;
+
+
 
 class Brand extends Model
 {

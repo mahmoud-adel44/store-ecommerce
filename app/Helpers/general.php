@@ -1,19 +1,22 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 define('PAGINATION_COUNT', 15);
 
-function getFolder():string
+function getFolder(): string
 {
-    return app() ->getLocale() === 'ar' ? 'css-rtl' : 'css';
-
+    return app()->getLocale() === 'ar' ? 'css-rtl' : 'css';
 }
 
 function transwords($message)
 {
-    return Stichoza\GoogleTranslate\GoogleTranslate::trans($message , App::getLocale());
+    return Stichoza\GoogleTranslate\GoogleTranslate::trans($message, App::getLocale());
 }
 
-function uploadImage($folder,$image){
+function uploadImage($folder, $image)
+{
     $image->store('/', $folder);
-    return $image->hashName();
- }
+    $filename = $image->hashName();
+    return  $filename;
+}

@@ -138,10 +138,10 @@
                                                         <select name="tags[]" class="select2 form-control" multiple>
                                                             <optgroup label=" اختر ألعلامات الدلالية ">
                                                                 @if($tags && $tags -> count() > 0)
-                                                                @foreach($tags as $tag)
-                                                                <option value="{{$tag -> id }}">{{$tag -> name}}
-                                                                </option>
-                                                                @endforeach
+                                                                    @foreach($tags as $tag)
+                                                                    <option value="{{$tag -> id }}">{{$tag -> name}}
+                                                                    </option>
+                                                                    @endforeach
                                                                 @endif
                                                             </optgroup>
                                                         </select>

@@ -26,6 +26,9 @@
         "php"
       ]
 },
+"cSpell.ignoreWords": [
+  "if"
+],
 
 
 }

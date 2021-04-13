@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Category;
 
 class Product extends Model
 {
@@ -85,7 +86,7 @@ class Product extends Model
 
     public function getActive()
     {
-        return  $this->is_active  == 0 ?  'غير مفعل'   : 'مفعل';
+        return $this->is_active == 0 ? 'غير مفعل' : 'مفعل';
     }
 
     public function categories()
@@ -106,5 +107,34 @@ class Product extends Model
     public function options()
     {
         return $this->hasMany(Option::class, 'product_id');
+    }
+
+    //////
+    ///
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'product_id');
+    }
+
+    public function hasStock($quantity)
+    {
+        return $this->qty >= $quantity;
+    }
+
+    public function outOfStock()
+    {
+        return $this->qty === 0;
+    }
+
+    public function inStock()
+    {
+        return $this->qty >= 1;
+    }
+
+
+    public function getTotal($converted = true)
+    {
+        return $total =  $this->special_price ?? $this->price;
     }
 }

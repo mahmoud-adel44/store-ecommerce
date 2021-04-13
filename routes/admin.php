@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | admin Routes
@@ -77,7 +78,8 @@ Route::group(
                 Route::post('update/{id}', 'TagsController@update')->name('admin.tags.update');
                 Route::get('delete/{id}', 'TagsController@destroy')->name('admin.tags.delete');
             });
-            ################################## end brands    #######################################
+            ################################## end Tags    #######################################
+
             ################################## products routes ######################################
             Route::group(['prefix' => 'products'], function () {
                 Route::get('/', 'ProductsController@index')->name('admin.products');
@@ -96,6 +98,27 @@ Route::group(
             });
             ################################## end products    #######################################
 
+            ################################## attributes routes ######################################
+            Route::group(['prefix' => 'attributes'], function () {
+                Route::get('/', 'AttributesController@index')->name('admin.attributes');
+                Route::get('create', 'AttributesController@create')->name('admin.attributes.create');
+                Route::post('store', 'AttributesController@store')->name('admin.attributes.store');
+                Route::get('delete/{id}', 'AttributesController@destroy')->name('admin.attributes.delete');
+                Route::get('edit/{id}', 'AttributesController@edit')->name('admin.attributes.edit');
+                Route::post('update/{id}', 'AttributesController@update')->name('admin.attributes.update');
+            });
+            ################################## end attributes    #######################################
+
+            ################################## brands options ######################################
+            Route::group(['prefix' => 'options'], function () {
+                Route::get('/', 'OptionsController@index')->name('admin.options');
+                Route::get('create', 'OptionsController@create')->name('admin.options.create');
+                Route::post('store', 'OptionsController@store')->name('admin.options.store');
+                //Route::get('delete/{id}','OptionsController@destroy') -> name('admin.options.delete');
+                Route::get('edit/{id}', 'OptionsController@edit')->name('admin.options.edit');
+                Route::post('update/{id}', 'OptionsController@update')->name('admin.options.update');
+            });
+            ################################## end options    #######################################
 
         });
 
