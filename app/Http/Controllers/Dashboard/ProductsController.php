@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Tag;
 use App\Models\Brand;
+use App\Models\Image;
 use App\Models\Product;
+// use Faker\Provider\Image;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use League\CommonMark\Inline\Element\Image;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductStockRequest;
+use App\Http\Requests\ProductImagesRequest;
 use App\Http\Requests\GeneralProductRequest;
+use App\Http\Requests\ProductPriceValidation;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 
 class ProductsController extends Controller
 {
@@ -28,10 +35,12 @@ class ProductsController extends Controller
 
 
 
-    public function store(GeneralProductRequest $request)
+
+
+    public function store(Request $request)
     {
 
-
+        // return $request;
         DB::beginTransaction();
 
         //validation
@@ -59,142 +68,90 @@ class ProductsController extends Controller
         //save product tags
 
         DB::commit();
-        return redirect()->route('admin.products')->with(['success' => 'تم ألاضافة بنجاح']);
+        return redirect()->route('admin.products')->with(['success' => 'تم الاضافة بنجاح']);
     }
 
 
 
-    // public function getPrice($product_id)
-    // {
+    public function getPrice($product_id)
+    {
 
-    //     return view('dashboard.products.prices.create')->with('id', $product_id);
-    // }
+        return view('dashboard.products.prices.create')->with('id', $product_id);
+    }
 
-    // public function saveProductPrice(ProductPriceValidation $request)
-    // {
+    public function saveProductPrice(ProductPriceValidation $request)
+    {
 
-    //     try {
+        try {
 
-    //         Product::whereId($request->product_id)->update($request->only(['price', 'special_price', 'special_price_type', 'special_price_start', 'special_price_end']));
+            Product::whereId($request->product_id)->update($request->only(['price', 'special_price', 'special_price_type', 'special_price_start', 'special_price_end']));
 
-    //         return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-    //     } catch (\Exception $ex) {
-    //     }
-    // }
-
-
-
-    // public function getStock($product_id)
-    // {
-
-    //     return view('dashboard.products.stock.create')->with('id', $product_id);
-    // }
-
-    // public function saveProductStock(ProductStockRequest $request)
-    // {
+            return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
+        } catch (\Exception $ex) {
+            report($ex);
+            return redirect()->route('admin.products')->with(['error' => $ex]);
+        }
+    }
 
 
-    //     Product::whereId($request->product_id)->update($request->except(['_token', 'product_id']));
 
-    //     return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-    // }
+    public function getStock($product_id)
+    {
 
-    // public function addImages($product_id)
-    // {
-    //     return view('dashboard.products.images.create')->withId($product_id);
-    // }
+        return view('dashboard.products.stock.create')->with('id', $product_id);
+    }
+
+    public function saveProductStock(ProductStockRequest $request)
+    {
+
+        try {
+            Product::whereId($request->product_id)->update($request->except(['_token', 'product_id']));
+            return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
+        } catch (\Exception $ex) {
+            report($ex);
+            return redirect()->back()->with(['error' => $ex]);
+        }
+    }
+
+    public function addImages($product_id)
+    {
+        return view('dashboard.products.images.create')->withId($product_id);
+    }
+
 
     // //to save images to folder only
-    // public function saveProductImages(Request $request)
-    // {
+    public function saveProductImages(Request $request)
+    {
 
-    //     $file = $request->file('dzfile');
-    //     $filename = uploadImage('products', $file);
+        $file = $request->file('photo');
+        // return $file;
+        $filename = uploadImage('products', $file);
+        // $filename = Product::saveImage('products', $file);
 
-    //     return response()->json([
-    //         'name' => $filename,
-    //         'original_name' => $file->getClientOriginalName(),
-    //     ]);
-    // }
+        return response()->json([
+            'name' => $filename,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
+    }
 
-    // public function saveProductImagesDB(ProductImagesRequest $request)
-    // {
-
-    //     try {
-    //         // save dropzone images
-    //         if ($request->has('document') && count($request->document) > 0) {
-    //             foreach ($request->document as $image) {
-    //                 Image::create([
-    //                     'product_id' => $request->product_id,
-    //                     'photo' => $image,
-    //                 ]);
-    //             }
-    //         }
-
-    //         return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-    //     } catch (\Exception $ex) {
-    //     }
-    // }
-    // public function edit($id)
-    // {
-
-    //     //get specific categories and its translations
-    //     $category = Category::orderBy('id', 'DESC')->find($id);
-
-    //     if (!$category)
-    //         return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
-
-    //     return view('dashboard.categories.edit', compact('category'));
-    // }
+    public function saveProductImagesDB(ProductImagesRequest $request)
+    {
 
 
-    // public function update($id, MainCategoryRequest $request)
-    // {
-    //     try {
-    //         //validation
+        try {
+            // save dropzone images
+            if ($request->has('document') && count($request->document) > 0) {
+                foreach ($request->document as $image) {
+                    Image::create([
+                        'product_id' => $request->product_id,
+                        'photo' => $image,
+                    ]);
+                }
+            }
 
-    //         //update DB
-
-
-    //         $category = Category::find($id);
-
-    //         if (!$category)
-    //             return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود']);
-
-    //         if (!$request->has('is_active'))
-    //             $request->request->add(['is_active' => 0]);
-    //         else
-    //             $request->request->add(['is_active' => 1]);
-
-    //         $category->update($request->all());
-
-    //         //save translations
-    //         $category->name = $request->name;
-    //         $category->save();
-
-    //         return redirect()->route('admin.maincategories')->with(['success' => 'تم ألتحديث بنجاح']);
-    //     } catch (\Exception $ex) {
-
-    //         return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-    //     }
-    // }
-
-
-    // public function destroy($id)
-    // {
-
-    //     try {
-    //         //get specific categories and its translations
-    //         $category = Category::orderBy('id', 'DESC')->find($id);
-
-    //         if (!$category)
-    //             return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
-
-    //         $category->delete();
-
-    //         return redirect()->route('admin.maincategories')->with(['success' => 'تم  الحذف بنجاح']);
-    //     } catch (\Exception $ex) {
-    //         return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
-    //     }
-    // }
+            return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.products')->with(['error' => $ex]);
+        }
+    }
 }

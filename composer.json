@@ -19,7 +19,8 @@
         "laravel/ui": "2.4",
         "mcamara/laravel-localization": "^1.6",
         "stichoza/google-translate-php": "^4.1",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "~9.0",
+        "yoeunes/notify": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -50,6 +51,7 @@
         "laravel": {
             "dont-discover": [
                 "laravel/dusk"
+
             ]
         }
     },

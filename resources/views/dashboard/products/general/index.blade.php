@@ -78,14 +78,14 @@
                                         </tbody>
                                     </table>
                                     <div class="justify-content-center d-flex">
-
+                                        {!! $products -> links() !!}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {!! $products -> links() !!}
+
             </section>
         </div>
     </div>
